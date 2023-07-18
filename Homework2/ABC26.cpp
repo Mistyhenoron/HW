@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 int main() {
-    int n,k,i=0;
+    long long n,k,i=0;
     cin >> n >> k;
     while (i<k){
         if (n%200 == 0) {
@@ -11,9 +11,7 @@ int main() {
             n = n * 1000 + 200;
             i++;
     }
-    cout << n;
     }
+    cout << n;
     return 0;
 }
-
-
