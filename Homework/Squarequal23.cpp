@@ -1,17 +1,24 @@
 #include <bits/stdc++.h>
 using namespace std;
-int main() {
-    double a,b,c;
-    cin >> a >> b >> c;
-    if ((b*b)-(4*a*c) > 0) {
-        cout << -b-sqrt(b*b-4*a*c)/(2*a);
-        cout << -b+sqrt(b*b-4*a*c)/(2*a);
+int disk(double a, double b){
+    if(abs(a-b)<1e-9){
+        return 0;
     }
-    else if ( (b*b)-4*a*c == 0) {
-        cout << (-b)/(2*a);
-    }
-    else if ((b*b)-4*a*c < 0) {
-        cout << 0;
-    }
-      return 0;
+}
+int main(){
+double a,b,c;
+cin >> a >> b >> c;
+int d=b*b-4*a*c;
+if (disk(d,0)==0){
+        cout << -b/2*a;
+
+}
+else if(d<0){
+    cout << " ";
+}
+else{
+    cout << (-b+sqrt(d))/2*a << endl;
+    cout << (-b-sqrt(d))/2*a;
+}
+    return 0;
 }
