@@ -1,24 +1,23 @@
 #include <bits/stdc++.h>
 using namespace std;
-int disk(double a, double b){
+bool disk(double a, double b){
     if(abs(a-b)<1e-9){
-        return 0;
+        return 1;
     }
+    return 0;
 }
 int main(){
-double a,b,c;
-cin >> a >> b >> c;
-int d=b*b-4*a*c;
-if (disk(d,0)==0){
-        cout << -b/2*a;
+    double a,b,c;
+    cin >> a >> b >> c;
+    double d=b*b - 4*a*c;
+    if (disk(d,0)){
+            cout << setprecision(9) << fixed <<  -b/(2*a);
 
-}
-else if(d<0){
-    cout << " ";
-}
-else{
-    cout << (-b+sqrt(d))/2*a << endl;
-    cout << (-b-sqrt(d))/2*a;
-}
+    }
+
+    else if (d>0){
+        double sq = sqrt(abs(d));
+        cout << setprecision(9) << fixed<<  (-b + sq)/(2*a) <<"\n" << (-b - sq)/(2*a);
+    }
     return 0;
 }
