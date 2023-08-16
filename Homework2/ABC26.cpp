@@ -10,7 +10,7 @@ int main() {
         else {
             n = n * 1000 + 200;
             i++;
-    }
+        }
     }
     cout << n;
     return 0;
