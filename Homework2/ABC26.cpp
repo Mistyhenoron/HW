@@ -1,5 +1,7 @@
 #include <bits/stdc++.h>
+
 using namespace std;
+
 int main() {
     long long n,k,i=0;
     cin >> n >> k;
@@ -8,7 +10,7 @@ int main() {
             n = n/200;
             i++;}
         else {
-            n = n * 1000 + 200;
+            n = n*1000 + 200;
             i++;
         }
     }
