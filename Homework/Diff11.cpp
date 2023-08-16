@@ -1,5 +1,7 @@
 #include <bits/stdc++.h>
+
 using namespace std;
+
 int Diff11() {
     int h1,m1,s1,h2,m2,s2;
     cin >> h1 >> m1 >> s1 >> h2 >> m2 >> s2;
