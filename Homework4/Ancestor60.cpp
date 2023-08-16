@@ -2,9 +2,10 @@
 
 using namespace std;
 
+const int  N = 57;
+int n, a[N];
+
 int main() {
-    const int  N = 57;
-    int n, a[N];
     cin >> n;
 
     for (int i = 2; i <= n; i++){
