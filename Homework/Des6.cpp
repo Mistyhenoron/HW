@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int Des6() {
+int main() {
    int x;
    cin >> x;
    cout << x/10%10;
