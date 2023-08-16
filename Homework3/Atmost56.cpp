@@ -31,6 +31,6 @@ int main() {
         }
     }
     cout << x + y + z;
-return 0;
+    return 0;
 }
 
