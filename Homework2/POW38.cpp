@@ -1,13 +1,15 @@
 #include <bits/stdc++.h>
+
 using namespace std;
+
 int main(){
-int a,b,c;
+int a, b, c;
 cin >> a >> b >> c;
-if (c%2==0){
-    if (abs(a)>abs(b)){
+if (c%2 == 0){
+    if (abs(a) > abs(b)){
         cout << ">";
     }
-    else if (abs(a)<abs(b)) {
+    else if (abs(a) < abs(b)) {
         cout << "<";
     }
     else {
@@ -15,10 +17,10 @@ if (c%2==0){
     }
 }
 else {
-     if (a>b){
+     if (a > b){
         cout << ">";
     }
-    else if (a<b) {
+    else if (a < b) {
         cout << "<";
     }
     else {
