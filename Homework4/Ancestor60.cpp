@@ -3,18 +3,18 @@
 using namespace std;
 
 int main() {
-    int n;
+    const int  N = 57;
+    int n, a[N];
     cin >> n;
-    int a[999];
-    int cnt = 0, act = n;
-    for (int i = 1; i < n; i++){
+
+    for (int i = 2; i <= n; i++){
         cin >> a[i];
     }
+    int cnt = 0, act = n;
     while (act != 1){
-        n++;
+        cnt++;
         act = a[act];
-        act--;
      }
-    cout << n;
+    cout << cnt;
      return 0;
 }
