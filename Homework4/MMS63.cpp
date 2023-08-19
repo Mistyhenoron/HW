@@ -20,7 +20,7 @@ int main() {
     for (int i = 1; i <= q; i++) {
         int s, t;
         cin >> s >> t;
-        cout << a[s][t ] << "\n";
+        cout << a[s][t] << "\n";
     }
   
     return 0;
