@@ -2,14 +2,18 @@
 
 using namespace std;
 
-int a, b, d, al, e, ash, bsh;
+double a, b, d, al, e, ash, bsh, len;
+const double pi = acos(-1);
 
 int main() {
     cin >> a >> b >> d;
+
     al = atan2(b,a);
-    e = al + (3,14*d)/180;
-    ash = sin(e)*sqrt(a*a+b*b);
-    bsh = cos(e)*sqrt(a*a+b*b);
-    cout << ash << "\n" << bsh;
+    e = al + pi*d/180;
+    len = sqrt(a*a + b*b);
+    ash = cos(e)*len;
+    bsh = sin(e)*len;
+
+    cout << setprecision(18) <<  fixed << ash << " " << bsh;
     return 0;
 }
