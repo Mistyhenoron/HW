@@ -3,7 +3,7 @@ using namespace std;
 const int mod = 998244353;
 int main() {
     long long a, b, c, d, e, f;
-    cin >> a >> b >> c >> d >> f;
+    cin >> a >> b >> c >> d >> e >> f;
     a = a % mod;
     b = b % mod;
     c = c % mod;
