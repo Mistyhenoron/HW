@@ -2,35 +2,37 @@
 
 using namespace std;
 
+const int N = 1e3 + 4, W = 1e6 + 4;
+int n, w, x, y, z, res;
+int a[N];
+bool used[3*W];
+
 int main() {
-    int n, w, x = 0, y = 0, z = 0;
-    cin >> n >> w;
-    int a[999];
+    cin >> n >>w ;
     for (int i = 0; i < n; i++){
         cin >> a[i];
     }
     for (int i = 0; i < n; i++){
-        if (a[i] <= w){
-            x++;
-        }
+       used[a[i]] = 1;
     }
     for (int i = 0; i < n; i++){
         for (int j = i + 1;j < n; j++){
-            if (a[i] + a[j] <= w && a[i + 1] + a[j + 1]!=a[i] + a[j]) {
-                y++;
-            }
+            used[a[i] + a[j]] = 1;
         }
     }
     for (int i = 0; i < n; i++){
         for (int j = i + 1; j < n; j++){
             for (int k = j + 1; k < n; k++){
-                if (a[i] + a[j] + a[k] <= w && a[i + 1] + a[j + 1] + a[k + 1]!= a[i] + a[j] +a [k]){
-                    z++;
-                }
+                used[a[i] + a[j] + a[k]] = 1;
             }
         }
     }
-    cout << x + y + z;
+    for (int i = 1; i <= w; i++) {
+        if (used[i]) {
+            res++;
+        }
+    }
+    cout << res;
     return 0;
 }
 
