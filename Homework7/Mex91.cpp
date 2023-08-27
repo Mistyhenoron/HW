@@ -3,7 +3,7 @@
 using namespace std;
 
 const int N = 2004;
-int a[N], n, minn = 2004, maxx = -1;
+int a[N], n, minn = 2004, maxx = -1, x;
 
 int main() {
     cin >> n;
@@ -16,13 +16,14 @@ int main() {
             maxx = a[i];
         }
     }
-    for (int i = 0; i < n; i++) {
-        if (a[i] = minn+1){
-            continue;
+    for (int i = 0; i < 2004; i++) {
+        for (int j = 0; j < n; j++) {
+            if (i != a[j] && i <= maxx) {
+                x  == i;
+            }
         }
-    }??????????????????
+    }
 
-            
-    cout << minn;
+    cout << x;
     return 0;
 }
