@@ -3,8 +3,8 @@
 using namespace std;
 
 int n,x;
-const int N = 1e5;
-int a[N];
+const int N = 4e5;
+int a[4*N], cnt[N];
 
 int main() {
     cin >> n;
@@ -12,15 +12,12 @@ int main() {
         cin >> a[i];
     }
     for (int i = 0; i < n; i++) {
-        int z = 0;
-        for (int i = 0; i < n; i++){
-            if (a[i] == z) {
-                x++;
-            }
-            if (x == 3) {
-                cout << z+1;
-            }
-            z++;
+        cnt[a[i]]++;
+    }
+    for (int i = 0; i < n; i++) {
+        if (cnt[i] == 3) {
+            cout << i;
+            break;
         }
     }
     return 0;
