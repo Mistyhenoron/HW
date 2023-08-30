@@ -2,18 +2,15 @@
 
 using namespace std;
 
-long long n, x = 1;
+int n;
 
 int main() {
     cin >> n;
-    for (int i = 0; i < n; i++) {
-        x *= 2;
-    }
-    if (x > n*n) {
-        cout << "Yes";
+    if (n == 2 || n == 3 || n == 4) {
+        cout << "No";
     }
     else {
-        cout << "No";
+        cout << "Yes";
     }
     return 0;
 }
