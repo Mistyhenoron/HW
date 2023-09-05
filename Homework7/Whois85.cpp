@@ -8,13 +8,13 @@ int a[N], cnt[N];
 
 int main() {
     cin >> n;
-    for (int i = 0; i < n; i++) {
+    for (int i = 1; i <= 4*n-1; i++) {
         cin >> a[i];
     }
-    for (int i = 1; i < n; i++) {
+    for (int i = 1; i <= 4*n-1; i++) {
         cnt[a[i]]++;
     }
-    for (int i = 1; i < n; i++) {
+    for (int i = 1; i <= 4*n-1; i++) {
         if (cnt[i] == 3) {
             cout << i;
             break;
