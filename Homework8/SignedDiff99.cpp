@@ -2,30 +2,23 @@
 
 using namespace std;
 
-int z;
-double xy, ans;
+int d, x, y;
+double xy;
+
 int main() {
     cin >> xy;
-    while (true) {
-        if (xy - z > 1) {
-            z++;
-        }
-        else  {
-            ans = xy - z;
-            break;
-        }
-cout << ans;
+    d = xy*10 + 0.5;
+    y = d % 10;
+    x = d/10;
+    if (y == 0 || y  == 1 || y == 2) {
+        cout << x << '-';
     }
-    if (ans == 0 || ans  == 0.1 ||  ans == 0.2) {
-        cout << z << '-';
+    else if (y == 3  || y == 4 || y == 5 || y == 6 ) {
+        cout << x;
     }
-    else if (ans == 0.3  || ans == 0.4 || ans == 0.5 || ans == 0.6 ) {
-        cout << z;
-    }
-    else if (ans == 0.7 || ans == 0.8 || ans == 0.9) {
-        cout << z << '+';
-    }
+    else if (y == 7 || y == 8 || y == 9) {
+        cout << x << '+';
 
     return 0;
+    }
 }
-
