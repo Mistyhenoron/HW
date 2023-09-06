@@ -8,7 +8,7 @@ int n, m, x, t, d, a[N], z = 0;
 
 int main() {
     cin >> n >> m >> x >> t >> d;
-    for (int i = x; i != 0; i--) {
+    for (int i = x; i >= 0; i--) {
         a[i] = t - z;
         z += d;
     }
