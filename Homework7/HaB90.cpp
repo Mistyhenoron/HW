@@ -16,7 +16,6 @@ int main() {
         for (int j = 0; j < n; j++) {
             if (a[j] == b[j]) {
                 x++;
-                break;
             }
         }
     for (int i = 0; i < n; i++) {
