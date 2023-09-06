@@ -2,19 +2,17 @@
 
 using namespace std;
 
-int n;
+long long int n, k;
 
 int main() {
 
     cin >> n;
     while (true) {
-        if (n = pow(2,log2(n))) {
-            cout << (int)log2(n);
+        if (k + 1 > log2(n)) {
             break;
         }
-         n--;
-        }
-
+        k += 1;
+    }
+    cout << k;
     return 0;
 }
-
