@@ -16,7 +16,7 @@ int main() {
     while (true) {
         b[x] = 1;
         int nxt = a[x];
-        if (b[nxt] = 1) {
+        if (b[nxt] == 1) {
             break;
         }
         x = nxt;
