@@ -4,7 +4,8 @@ using namespace std;
 
 const int N = 1e5 + 4;
 
-int n, x, a[N], j, z, m, y;
+int n, x, a[N], res;
+
 bool b[N];
 
 int main() {
@@ -12,16 +13,14 @@ int main() {
     for (int i = 1; i <= n; i++) {
         cin >> a[i];
     }
-    int s = x;
     while (true) {
-        b[s] = 1;
-        int nxt = a[s];
+        b[x] = 1;
+        int nxt = a[x];
         if (b[nxt] = 1) {
             break;
         }
-        s = nxt;
+        x = nxt;
     }
-    int res = 0;
     for (int i = 1; i <= n; ++i) {
         res += b[i];
     }
