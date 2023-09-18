@@ -2,20 +2,20 @@
 
 using namespace std;
 
-int a, b, k, ak, n, x, y;
+int k;
+string a, b;
 
 int main() {
+    ios::sync_with_stdio(0);
+    cout.tie(0), cin.tie(0);
     cin >> k >> a >> b;
-    ak = a;
-    while (ak > 0) {
-        ak/=10;
-        n++;
+    long long va = 0, vb = 0;
+    for (int i = 0; i < a.size(); i++) {
+        va = va*k + (a[i] - '0');
     }
-    while (n >= 0) {
-        x += n/((n-1)*10) * pow(k,n-1);
-        y += n/((n-1)*10) * pow(k,n-1);
+    for (int i = 0; i < b.size(); i++) {
+        vb = vb*k +(b[i] - '0');
     }
-    cout << x*y;
+    cout << va*vb;
     return 0;
 }
-
