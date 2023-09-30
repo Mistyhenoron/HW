@@ -2,9 +2,10 @@
 
 using namespace std;
 
-const int N = 1004;
+const int N = 1004, INF = 10000;
 
-int n, m, a[N][N], maxx = -10000, minn = 10000, max2 = -10000, min2 = 10000;
+int n, m, a[N][N],
+maxx = -INF, minn = INF, max2 = -INF, min2 = INF;
 vector <int> uchmax, uchmin;
 
 int main() {
@@ -21,27 +22,18 @@ int main() {
             }
         }
         uchmin.push_back(minn);
-        minn = 10000;
+        minn = INF;
     }
-    for (int j = 0; j < m; j++) {
-        for (int i = 0; i < n; i++) {
-            if (a[j][i] > maxx) {
+    for (int i = 0; i < n; i++) {           {}
+        for (int j = 0; j < m; j++) {
+            if (a[j][i] > maxx) {           !!!!!!!!!!!!!!!!!!!!!!!
                 maxx = a[j][i];
             }
         }
         uchmax.push_back(maxx);
-        maxx = -10000;
+        maxx = -INF;
     }
-
-    for (int i = 0; i < n; i++) {
-        if (uchmax[i] <min2) {
-            min2 = uchmax[i];
-        }
-        if (uchmin[i] > max2) {
-            max2 = uchmin[i];
-        }
-    }
-    cout << max2 << " " << min2;
-
+    cout << *max_element(uchmin.begin(), uchmin.end()) << " ";
+    cout << *min_element(uchmax.begin(), uchmax.end());
     return 0;
 }
