@@ -13,7 +13,7 @@ int main() {
             if (t.size() > 1023) {
                 t.resize(1023);
                 break;
-            }
+            } 
         }
         cout << t;
         return 0;
