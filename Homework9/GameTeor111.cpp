@@ -24,9 +24,9 @@ int main() {
         uchmin.push_back(minn);
         minn = INF;
     }
-    for (int i = 0; i < n; i++) {           {}
+    for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
-            if (a[j][i] > maxx) {           !!!!!!!!!!!!!!!!!!!!!!!
+            if (a[j][i] > maxx) {
                 maxx = a[j][i];
             }
         }
