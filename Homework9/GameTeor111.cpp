@@ -24,8 +24,8 @@ int main() {
         uchmin.push_back(minn);
         minn = INF;
     }
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
             if (a[j][i] > maxx) {
                 maxx = a[j][i];
             }
@@ -37,3 +37,4 @@ int main() {
     cout << *min_element(uchmax.begin(), uchmax.end());
     return 0;
 }
+
