@@ -6,7 +6,7 @@ string s, x, y, xy;
 int maxx = -1e8;
 
 int pmsum(string x) {
-    int itog;
+    int itog = 0;
     for (int i = 0; i < x.size(); i++) {
         if ((i - '0') % 2 == 0) {
             itog += (x[i] - '0');
