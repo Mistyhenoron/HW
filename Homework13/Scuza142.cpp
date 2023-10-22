@@ -4,21 +4,20 @@ using namespace std;
 
 const int N = 1e5 + 7;
 
-long long t, nm[N], qm[N];
-
-int bs(int a[N], int n) {
-    sort(a[0], a[n-1]);
-    int l = 0, r = n - 1;
+long long t, nm[N], qm[N], prefmax[N], prefsum[N];
+int bs(long long j, long long n, long long prefmax[N]) {
+    int l = -1, r = n, m;
     while (l + 1 < r) {
-        int m = (l + r)/2;
-        if (a[m] >= n) {
-            r = m;
+        m = (l + r)/2;
+        if (prefmax[m] < j) {
+            l = m;
         }
         else {
-            l = m;
+            r = m;
         }
     }
     return r;
+
 }
 
 int main() {
@@ -32,16 +31,19 @@ int main() {
         for (int i = 0; i < q; i++) {
             cin >> qm[i];
         }
-        for (int i = 0; i < q; i++) {
-                long long ans = 0;
-                int g = bs(nm, n);
-            for (int j = 0; j < g; j++) {
-                    ans += nm[j];
-            }
-        cout << ans << " ";
+        long long prefmax[N];
+        long long prefsum[N];
+        prefmax[0] = nm[0];
+        prefsum[0] = nm[0];
+        for (int i = 1; i < n; i++) {
+            prefmax[i] = max(prefmax[i - 1], nm[i]);
+            prefsum[i] = prefsum[i - 1] + nm[i];
         }
-    cout << "\n";
-
+        for (int i = 0; i < q; i++) {
+            long long temp = bs(qm[i], n, prefmax);
+            long long ans = prefsum[temp];
+            cout << ans << " ";
+        }
     }
     return 0;
 }
