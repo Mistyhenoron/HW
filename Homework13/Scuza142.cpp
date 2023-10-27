@@ -2,13 +2,14 @@
 
 using namespace std;
 
-const int N = 1e5 + 7;
+const int N = 2e5 + 7;
 
-long long t, nm[N], qm[N], prefmax[N], prefsum[N];
-int bs(long long j, long long n, long long prefmax[N]) {
-    int l = -1, r = n, m;
+long long t, nm[N], qm[N], prefmax[N], prefsum[N], n, q;
+
+int bs(long long j) {
+    int l = -1, r = n;
     while (l + 1 < r) {
-        m = (l + r)/2;
+        int m = (l + r)/2;
         if (prefmax[m] < j) {
             l = m;
         }
@@ -23,7 +24,6 @@ int bs(long long j, long long n, long long prefmax[N]) {
 int main() {
     cin >> t;
     for (int i = 0; i < t; i++) {
-        int n, q;
         cin >> n >> q;
         for(int i = 0; i < n; i++) {
             cin >> nm[i];
@@ -40,8 +40,13 @@ int main() {
             prefsum[i] = prefsum[i - 1] + nm[i];
         }
         for (int i = 0; i < q; i++) {
-            long long temp = bs(qm[i], n, prefmax);
-            long long ans = prefsum[temp];
+                if (prefsum[0] < q[i]) {
+                    continue;
+                }
+                else {
+                long long temp = bs(qm[i]);
+                long long ans = prefsum[temp];
+            }
             cout << ans << " ";
         }
     }
