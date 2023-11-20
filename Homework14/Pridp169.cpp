@@ -32,16 +32,14 @@ int main() {
             return 0;
         }
         else {
-                /*
-           auto x1 = lower_bound(a.begin(), a.end(), temp);
-           auto x2 = upper_bound(a.begin(), a.end(), temp);
+           int x1 = lower_bound(a.begin(), a.end(), temp) - a.begin();
+           int x2 = upper_bound(a.begin(), a.end(), temp) - a.begin();
             if (abs(a[x1] - temp) < abs(a[x2] - temp)) {
                 cout << a[x1];
             }
             else {
-                a[x2];
+                cout << a[x2];
             }
-            */ // тут проблемы
         }
     }
     return 0;
