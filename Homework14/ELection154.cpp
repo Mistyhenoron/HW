@@ -5,10 +5,7 @@ using namespace std;
 int x, y, z;
 
 bool Election(bool x, bool y, bool z) {
-    if (x + y + z >= 2) {
-        return 1;
-    }
-    return 0;
+    return x + y + z >= 2;
 }
 
 int main() {
