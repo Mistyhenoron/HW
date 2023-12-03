@@ -12,8 +12,6 @@ void isPrime(int n) {
         }
     }
     cout << "prime";
-return;
-
 }
 
 int main() {
