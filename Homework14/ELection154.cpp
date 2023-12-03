@@ -9,8 +9,8 @@ bool Election(bool x, bool y, bool z) {
 }
 
 int main() {
-    ios::sync_with_stdio();
-    cin.tie();
+    ios::sync_with_stdio(0);
+    cin.tie(0);
     cin >> x >> y >> z;
     cout << Election(x,y,z);
 
