@@ -13,8 +13,9 @@ int main() {
         }
     }
     for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
+        for (int j = 0; j < m; j++) {
             if (a[i][j] <= mini) {
+                mini = a[i][j];
                 minn[i] = a[i][j];
             }
         }
@@ -22,6 +23,7 @@ int main() {
     for (int j = 0; j < m; j++) {
         for (int i = 0; i < n; i++) {
             if (a[j][i] >= maxi) {
+                maxi = a[i][j];
                 maxx[j] = a[j][i];
             }
         }
@@ -36,3 +38,4 @@ int main() {
     cout << cnt;
     return 0;
 }
+
