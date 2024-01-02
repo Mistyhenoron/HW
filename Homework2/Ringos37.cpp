@@ -1,27 +1,24 @@
 #include <bits/stdc++.h>
 
 using namespace std;
+using ll = long long;
 
-int main(){
-int n, x = 0;
-cin >> n;
-int a[999];
-vector <int> cnt;
-for (int i = 0; i < n; i++){
-    cin >> a[i];
-}
-for (int i = 0; i < n; i++){
-    for (int j = 1; j < n + 1; j++){
-    if (a[j]-a[i]%200==0){
-        cnt.push_back(a[i]);
+const int N = 1e6 + 4;
+ll a[N], n, ans;
+
+int main() {
+    cin >> n;
+    for (int i = 1; i <= n; i++) {
+        cin >> a[i];
+    }
+    for (int i = 1; i <= n; i++) {
+        for (int j = i; j <= n; j++) {
+            if (i >= 1 && j > i && abs(a[i]-a[j])%200 == 0) {
+                ans++;
+            }
         }
     }
-}
-for (int i=0;i<cnt.size(); i++) {
-    x++;
-}
-cout << (x*(x - 1))/2;
+    cout << ans;
     return 0;
 }
-
 
