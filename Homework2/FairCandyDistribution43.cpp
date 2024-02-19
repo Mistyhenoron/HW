@@ -43,3 +43,47 @@ int main() {
     }
     return 0;
 }
+-----------------------------------------------------------------------------------------
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int n, k, temp, cnt;
+vector <int> a, b;
+
+int main() {
+    cin >> n >> k;
+    for (int i = 0; i < n; i++) {
+        cin >> temp;
+        a.push_back(temp);
+    }
+   while (true) {
+        if (k - n >= n) {
+            k-= n;
+            cnt++;
+        }
+        else {
+            break;
+        }
+    }
+    k-= n;
+    cnt++;
+    for (int i = 0; i < n; i++) {
+        b[a[i]] += cnt;
+    }
+    sort(a.begin(), a.end());
+    for (int i = 0; i < n; i++) {
+        b[a[i]]++;
+        k--;
+        if (k == 0) {
+            break;
+        }
+    }
+    
+    for (int i = 0; i < n; i++) {
+        if (b[a[i]] != 0) {
+            cout << b[a[i]] << endl;
+        }
+    }
+    return 0;
+}
