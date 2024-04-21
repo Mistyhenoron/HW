@@ -2,28 +2,23 @@
 
 using namespace std;
 
-int main() {
-    string s;
-    int a[100][2];
-    int n, q;
+int n, q, st;
+string s;
+
+int main(){
     cin >> n >> q;
-    for (int i = 0; i < n; i++){
-        cin >> s[i];
-    }
-    for (int i = 0; i < n; i++){
-        for (int j = 0; j < n; j++){
-            cin >> a[i][j];
-            if (a[i][1] == 1){
-                for (int i = 0; i < a[i][2]; i++){
-                    s[0] == s[n];
-                    delete s[i];
-                    else if (a[i][1] == 2){
-                        cout << s[a[i][1]];
-                    }
-    
-                }
-            }
+    cin >> s;
+    s += s;
+    for (int i = 0; i < q; i++) {
+        int var, x;
+        cin >> var >> x;
+        if (var == 1) {
+            st = (st-x)%n;
+        }
+        else if (var == 2) {
+            cout << s[x-1] << endl;
         }
     }
-        return 0;
+    return 0;
 }
+//не пон как реализовать этот сдвиг
