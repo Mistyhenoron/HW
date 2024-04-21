@@ -2,18 +2,17 @@
 
 using namespace std;
 
-const int N = 9999;
-int n;
-vector <vector <int>> a(n);
-vector <int> ans(n);
-
 int main(){
+    int n;
     cin >> n;
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            cin >> a[i][j];
-        }
-    }
+    vector<vector<int>> a(n, vector<int>(n));
+    vector<int> ans;
+    
+   for (int i = 0; i < n; i++) {
+       for (int j = 0; j < n; j++) {
+           cin >> a[i][j];
+       }
+   }
     
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
@@ -29,10 +28,8 @@ int main(){
     
     sort(ans.begin(), ans.end());
     
-    for (int i = 0; i < n; i++) { 
-        for (int j = 0; j < n; j++) {
-            cout << a[i][j];
-        }
+    for (int i = 0; i < ans.size(); i++) {
+        cout << ans[i];
     }
     return 0;
 }
