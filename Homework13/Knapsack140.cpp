@@ -1,74 +1,36 @@
 #include <bits/stdc++.h>
- 
- using namespace std;
- 
- int n, W, w1, p1, sumpol = 0, ans, ans2;
- vector <int> weight, price;
- 
- void upknapsack(int i, int weightlocal, int pricelocal) {
-     if (i == n) {
-        sumpol = max(sumpol, pricelocal);
-        ans = i;
+
+using namespace std;
+
+int n, w, sumpol = -99999, numeric;
+vector <int> pathans, path, allweight, allpol;
+
+void bt(int totalweight, int totalpol, int cnt) {
+    if (cnt == n) {
+        sumpol = max(sumpol, totalpol);
+        numeric = cnt;
+        pathans = path;
         return;
-     }
-     upknapsack(i + 1, weightlocal, pricelocal);
-     if (weightlocal + weight[i] <= W) {
-         upknapsack(i + 1,  weightlocal + weight[i], pricelocal + price[i]);
-     }
- }
- 
- int main() {
-    cin >> n >> W;
-    int temp = n;
-    while (temp--) {
-        cin >> w1 >> p1;
-        weight.push_back(w1);
-        price.push_back(p1);
     }
-    upknapsack(0, 0, 0);
-    cout << sumpol;
-    cout << " " << ans;
-     return 0;
- }
-// ----------------------------------------------------------------------------------------------------------------------------
+        bt(totalweight, totalpol, cnt+1);
+        if (totalweight + allweight[cnt] <= w) {
+            bt(totalweight + allweight[cnt], totalpol + allpol[cnt], cnt+1);
+            path.push_back(cnt+1);
+        }
+}
 
-
-
- #include <bits/stdc++.h>
- 
- using namespace std;
- 
- int n, W, w1, p1, sumpol = 0, ans;
- vector <int> weight, price, cnt, ans2;
- 
- void upknapsack(int i, int weightlocal, int pricelocal) {
-     if (i == n) {
-        sumpol = max(sumpol, pricelocal);
-        ans2 = cnt;
-        cnt.erase(cnt.begin() + 25);
-        return;
-     }
-     upknapsack(i + 1, weightlocal, pricelocal);
-     if (weightlocal + weight[i] <= W) {
-         cnt.push_back(i);
-         upknapsack(i + 1,  weightlocal + weight[i], pricelocal + price[i]);
-         cnt.pop_back();
-     }
- }
- 
- int main() {
-    cin >> n >> W;
-    int temp = n;
-    while (temp--) {
-        cin >> w1 >> p1;
-        weight.push_back(w1);
-        price.push_back(p1);
+int main(){
+    cin >> n >> w;
+    for (int i = 0; i < n; i++) {
+        int f, s;
+        cin >> f >> s;
+        allweight.push_back(f);
+        allpol.push_back(s);
     }
-    upknapsack(0, 0, 0);
-    cout << sumpol << endl;
-    for (int i = 0; i < ans2.size(); i++) {
-        cout << ans2[i] << " ";
+    bt(0,0,0);
+    cout << numeric << " " << sumpol << endl;
+    for (int i = 0; i < pathans.size(); i++) {
+        cout << pathans[i] << " ";
     }
-     return 0;
- }
-// Почему он перестал работать (((
+    return 0;
+}
