@@ -2,39 +2,45 @@
 
 using namespace std;
 
-const int N = 100;
-int n, m, k, ans, colors[N], provoda[N][2];
+int n, m, k, lamps[1000][2], ans, colors[1000];
 
 bool check() {
-    for (int i = 1; i <= m; i++) {
-        if (colors[provoda[i][0]] == colors[provoda[i][1]]) {
-            return false;
+    for (int i = 0; i < m; i++) {
+        if (colors[lamps[i][0]] == colors[lamps[i][1]]) {
+            return 0;
         }
     }
-    return true;
+    return 1;
 }
 
-void Girls(int post) {
-    if (check()) {
-        ans++;
+void bt(int cnt) {
+    if (cnt == n) {
+        if (check()) {
+            ans++;
+        }
         return;
     }
     for (int i = 1; i <= k; i++) {
-        colors[post] = i;
-        Girls(post + 1);
+        colors[cnt] = i;
+        bt(cnt+1);
     }
+    
 }
 
-int main() {
-    cin >> n >> m >> k;
-    for (int i = 1; i <= m; i++) {
-        int fir, sec;
-        cin >> fir >> sec;
-        provoda[i][0] = fir;
-        provoda[i][1] = sec;
+int main(){
+    cin >> n >> k >> m;
+    for (int i = 0; i < m; i++) {
+        int f, s;
+        cin >> f >> s;
+        lamps[i][0] = f;
+        lamps[i][1] = s;
+        lamps[i][0]--;
+        lamps[i][1]--;
     }
-
-    Girls(0);
+    
+    bt(0);
+    
     cout << ans;
     return 0;
 }
+
