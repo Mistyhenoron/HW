@@ -2,35 +2,33 @@
 
 using namespace std;
 
-int n, w, sumpol = -99999, numeric;
-vector <int> pathans, path, allweight, allpol;
+int n, k, finutility, finquantity, w[10000], p[10000], W;
+vector <int> ans, anstemp;
 
-void bt(int totalweight, int totalpol, int cnt) {
-    if (cnt == n) {
-        sumpol = max(sumpol, totalpol);
-        numeric = cnt;
-        pathans = path;
+void Knapsack(int cnt, int weight, int utility, int quantity) {
+    if (cnt == n || weight > W) {
+        finutility = max(finutility, utility);
+        finquantity = anstemp.size();
+        ans = anstemp;
         return;
     }
-        bt(totalweight, totalpol, cnt+1);
-        if (totalweight + allweight[cnt] <= w) {
-            bt(totalweight + allweight[cnt], totalpol + allpol[cnt], cnt+1);
-            path.push_back(cnt+1);
-        }
+    Knapsack(cnt+1, weight, utility, quantity);
+    if (weight + w[cnt] < W) {
+        anstemp.push_back(cnt+1);
+        Knapsack(cnt+1, weight + w[cnt], utility + p[cnt], quantity+1);
+        anstemp.pop_back();
+    }
 }
 
 int main(){
-    cin >> n >> w;
+    cin >> n >> W;
     for (int i = 0; i < n; i++) {
-        int f, s;
-        cin >> f >> s;
-        allweight.push_back(f);
-        allpol.push_back(s);
+        cin >> w[i] >> p[i];
     }
-    bt(0,0,0);
-    cout << numeric << " " << sumpol << endl;
-    for (int i = 0; i < pathans.size(); i++) {
-        cout << pathans[i] << " ";
+    Knapsack(0, 0, 0, 0);
+    cout << finquantity << " " << finutility << endl;
+    for (int i : ans) {
+        cout << i << " ";
     }
     return 0;
 }
