@@ -1,57 +1,51 @@
 #include <bits/stdc++.h>
-
+ 
 using namespace std;
-
-int n, m, ans = -1, checkans;
-bool light = 1, backlight = 0;
-vector <int> a;
-
-void bt(int cnt, int sum, int amount) { 
-    if (cnt == m) {
-        if (sum == n) {
-            if (light == 1) { // нам нужен первый вариант тк он самый лучший
-                ans = amount;
-                light = 0;
-            }
-            backlight = 1; // если вариантов вообще не нашлось, то в ответе 0
+ 
+int n, m, ans, checksum;
+vector <int> coins;
+bool light = 0;
+ 
+void bt(int cnt, int summ, int amount) {
+    if (summ == n) {
+        if (light == 0) {
+            ans = amount;
+            light = 1;
         }
         return;
     }
-    
-    bt(cnt+1, sum, amount);
-    
-    if (sum + a[cnt] <= n) {
-        bt(cnt+1, sum += a[cnt], amount++);
+    if (summ > n) {
+        return;
     }
-    
+    if (cnt == 0) {
+        return;
+    }
+    bt(cnt-1, summ, amount);
+    if (summ + coins[cnt] <= n) {
+        bt(cnt-1, summ + coins[cnt], amount+1);
+    }
+     
 }
-
-int main(){
+ 
+int main() {
     cin >> n >> m;
     for (int i = 0; i < m; i++) {
-        int temp;
-        cin >> temp;
-        a.push_back(temp);
-        a.push_back(temp);
-        checkans += 2*temp;
+        int coin;
+        cin >> coin;
+        coins.push_back(coin);
+        coins.push_back(coin);
+        checksum += 2*coin;
     }
-    sort(a.begin(), a.end());
-    reverse(a.begin(), a.end());
-    if (checkans < n) {
+    if (checksum < n) {
         cout << -1;
         return 0;
     }
-    bt(0, 0, 0);
-    
-    if (backlight == 0) {
+    sort(coins.begin(), coins.end());
+    bt(((2*m)-1), 0, 0);
+    if (light == 0) {
         cout << 0;
         return 0;
     }
     cout << ans;
     return 0;
 }
-
-
-
-
-
