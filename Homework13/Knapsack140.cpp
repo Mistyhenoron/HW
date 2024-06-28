@@ -1,34 +1,40 @@
 #include <bits/stdc++.h>
-
+ 
 using namespace std;
-
-int n, k, finutility, finquantity, w[10000], p[10000], W;
-vector <int> ans, anstemp;
-
-void Knapsack(int cnt, int weight, int utility, int quantity) {
-    if (cnt == n || weight > W) {
-        finutility = max(finutility, utility);
-        finquantity = anstemp.size();
-        ans = anstemp;
+ 
+long long n, W, w[100], p[100], ansp;
+vector <long long> ans, path;
+ 
+void bt(long long cnt, long long sumw, long long sump) {
+    if (sumw > W) {
         return;
     }
-    Knapsack(cnt+1, weight, utility, quantity);
-    if (weight + w[cnt] < W) {
-        anstemp.push_back(cnt+1);
-        Knapsack(cnt+1, weight + w[cnt], utility + p[cnt], quantity+1);
-        anstemp.pop_back();
+    if (cnt == n) {
+        if (ansp < sump) {
+            ansp = sump;
+            ans = path;
+        } else if (ansp == sump) {
+            if (path.size() < ans.size() || (path.size() == ans.size() && path < ans)) {
+                ans = path;
+            }
+        }
+        return;
     }
+    bt(cnt + 1, sumw, sump);
+    path.push_back(cnt);
+    bt(cnt + 1, sumw + w[cnt], sump + p[cnt]);
+    path.pop_back();
 }
-
+ 
 int main(){
     cin >> n >> W;
     for (int i = 0; i < n; i++) {
         cin >> w[i] >> p[i];
     }
-    Knapsack(0, 0, 0, 0);
-    cout << finquantity << " " << finutility << endl;
-    for (int i : ans) {
-        cout << i << " ";
+    bt(0, 0, 0);
+    cout << ans.size() << " " << ansp << endl;
+    for (int i = 0; i < ans.size(); i++) {
+        cout << ans[i] + 1 << " ";
     }
     return 0;
 }
