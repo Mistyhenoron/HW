@@ -31,4 +31,4 @@ int main() {
     }
     return 0;
 }
-// pochemu ono blya ne rabotaet ya plachu
+
