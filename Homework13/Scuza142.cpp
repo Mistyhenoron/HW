@@ -1,52 +1,54 @@
 #include <bits/stdc++.h>
 
 using namespace std;
+using ll = long long;
+using vi = vector<ll>;
+using vvi = vector<vector<ll>>;
+using vvvi = vector<vector<vector<ll>>>;
+#define p_b push_back
+const int INF = INT_MAX;
+int n, k, t;
+vi a, reqs, prefa;
 
-const int N = 2e5 + 7;
-
-long long t, nm[N], qm[N], prefmax[N], prefsum[N], n, q;
-
-int bs(long long j, int i) {
-    if (prefsum[0] < qm[i]) {
-        return -1;
+void bp(int req) {
+    int l = -1, r = n, m;
+    if (prefa[0] > req) {
+        cout << 0 << " ";
     }
-    int l = -1, r = n;
     while (l + 1 < r) {
-        int m = (l + r)/2;
-        if (prefmax[m] < j) {
+        m = (l+r)/2;
+        if (a[m] >= req) {
+            r = m;
+        } else {
             l = m;
         }
-        else {
-            r = m;
-        }
     }
-    return r;
-
+    int ans = prefa[r];
+    cout << ans << " ";
 }
 
 int main() {
     cin >> t;
-    for (int i = 0; i < t; i++) {
-        cin >> n >> q;
-        for(int i = 0; i < n; i++) {
-            cin >> nm[i];
+    while (t--) {
+        cin >> n >> k;
+        a.resize(n);
+        reqs.resize(k);
+        prefa.resize(n);
+        for (int i = 0; i < n; i++) {
+            cin >> a[i];
+            if (i == 1) {
+                prefa[i] += a[i-1] + a[i];
+            } else if (i > 1) {
+                prefa[i] += prefa[i-1] + a[i];
+            }
         }
-        for (int i = 0; i < q; i++) {
-            cin >> qm[i];
+        prefa[0] = a[0];
+        for (int i = 0 ; i < k; i++) {
+            int req;
+            cin >> req;
+            bp(req);
         }
-        long long prefmax[N];
-        long long prefsum[N];
-        prefmax[0] = nm[0];
-        prefsum[0] = nm[0];
-        for (int i = 1; i < n; i++) {
-            prefmax[i] = max(prefmax[i - 1], nm[i]);
-            prefsum[i] = prefsum[i - 1] + nm[i];
-        }
-        for (int i = 0; i < q; i++) {
-                long long temp = bs(qm[i], i);
-                long long ans = prefsum[temp];
-            cout << ans << " ";
-        }
+        cout << endl;
     }
     return 0;
 }
