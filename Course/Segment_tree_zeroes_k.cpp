@@ -59,28 +59,5 @@ void change(int v, int l, int r, int pos, ll val) {
 int main() {
     ios::sync_with_stdio(0);
     cin.tie(0);
-    ll n, q;
-    cin >> n;
-    for (int i = 0; i < n; i++) {
-        cin >> a[i];
-    }
-    build(0, 0, n); 
-    cin >> q;
-    for (int i = 0; i < q; i++) {
-        /*
-        string type;
-        cin >> type;
-        if (type == "s") {
-            int l, r;
-            cin >> l >> r;
-            cout << ask(0, 0, n, l - 1, r) << " ";
-        } else {
-            int pos, val;
-            cin >> pos >> val;
-            change(0, 0, n, pos - 1, val);
-        }
-    }
-    cout << endl; 
-    */
     return 0;
 }
